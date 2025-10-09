@@ -4,7 +4,7 @@ from app.components.icons import map_pin_icon, phone_icon, mail_icon
 
 def contact_form() -> rx.Component:
     script = """
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzqLQPRX-Y-MjTa9IqiZwkRliOs92VPyjop4ioHZi7YQ9e6xSGuU6mhsWq7JeeB1kIM/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwGeKO4c9LQCM1NuczFV3MDP13iNLg0V1n1IFcsAc2EOeqMWlQZFdub0BcoyAzYwbXc/exec';
 const form = document.getElementById('contact-form');
 
 const attachListener = () => {
@@ -71,7 +71,7 @@ setTimeout(attachListener, 100);
                         class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"
                     ),
                     rx.el.p(
-                        "123 Finance Street, Suite 400, Capital City, 12345",
+                        "Kamlesh Taili and Associates,1699, Shivshakti society, Sokhda Road - Kheda ",
                         class_name="font-['Roboto'] text-gray-600",
                     ),
                     class_name="flex items-start mb-4",
@@ -81,14 +81,14 @@ setTimeout(attachListener, 100);
                         class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"
                     ),
                     rx.el.p(
-                        "(123) 456-7890", class_name="font-['Roboto'] text-gray-600"
+                        "+91 9033239113", class_name="font-['Roboto'] text-gray-600"
                     ),
                     class_name="flex items-center mb-4",
                 ),
                 rx.el.div(
                     mail_icon(class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"),
                     rx.el.p(
-                        "contact@apexaccountants.com",
+                        "kamlesh.taili@kntassociates.com",
                         class_name="font-['Roboto'] text-gray-600",
                     ),
                     class_name="flex items-center mb-4",
