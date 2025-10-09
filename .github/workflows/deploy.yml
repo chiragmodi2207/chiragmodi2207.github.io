@@ -15,22 +15,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      
+
       - name: Export static site
         run: |
           reflex export --frontend-only --no-zip
-      
+
+      - name: Insert <base> tag into index.html
+        run: |
+          INDEX_FILE=".web/build/client/index.html"
+          BASE_TAG='<base href="/knt_associates_web_app/">'
+          sed -i "/<head>/a \  $BASE_TAG" "$INDEX_FILE"
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # ✅ updated to v3
+        uses: actions/upload-pages-artifact@v3
         with:
           path: '.web/build/client'
 
@@ -43,4 +49,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4  # ✅ updated to v4
+        uses: actions/deploy-pages@v4
