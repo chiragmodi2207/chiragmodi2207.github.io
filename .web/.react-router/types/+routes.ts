@@ -13,6 +13,9 @@ type Pages = {
   "/": {
     params: {};
   };
+  "/admin": {
+    params: {};
+  };
   "/*": {
     params: {
       "*": string;
@@ -23,7 +26,11 @@ type Pages = {
 type RouteFiles = {
   "root.jsx": {
     id: "root";
-    page: "/" | "/*";
+    page: "/" | "/admin" | "/*";
+  };
+  "routes/[admin]._index.jsx": {
+    id: "routes/[admin]._index";
+    page: "/admin";
   };
   "routes/_index.jsx": {
     id: "routes/_index";
