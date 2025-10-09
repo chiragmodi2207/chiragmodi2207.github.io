@@ -28,14 +28,7 @@ jobs:
       - name: Export static site
         run: |
           reflex export --frontend-only --no-zip
-
-      - name: Insert <base> tag into index.html (safe for minified HTML)
-        run: |
-          INDEX_FILE=".web/build/client/index.html"
-          BASE_TAG='<base href="/knt_associates_web_app/">'
-          awk -v base="$BASE_TAG" '{gsub(/<head>/,"<head>\n  " base); print}' "$INDEX_FILE" > temp.html && mv temp.html "$INDEX_FILE"
       
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
