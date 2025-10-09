@@ -8,7 +8,7 @@ def navbar() -> rx.Component:
             rx.el.div(
                 trending_up_icon(class_name="text-emerald-600 h-8 w-8"),
                 rx.el.span(
-                    "Apex Accountants",
+                    "KNT Associates",
                     class_name="font-['Roboto'] text-xl font-bold text-gray-800 ml-2",
                 ),
                 class_name="flex items-center",

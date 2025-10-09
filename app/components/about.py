@@ -30,7 +30,7 @@ def about_section() -> rx.Component:
                     class_name="font-['Roboto'] text-3xl md:text-4xl font-bold text-gray-900 tracking-tight",
                 ),
                 rx.el.p(
-                    "At Apex Accountants, we are a team of dedicated and experienced professionals committed to delivering exceptional financial services. Our mission is to empower our clients with the knowledge and support they need to achieve their financial goals. We believe in building long-term relationships based on trust, integrity, and a deep understanding of your unique needs.",
+                    "At KNT Associates, we are a team of dedicated and experienced professionals committed to delivering exceptional financial services. Our mission is to empower our clients with the knowledge and support they need to achieve their financial goals. We believe in building long-term relationships based on trust, integrity, and a deep understanding of your unique needs.",
                     class_name="font-['Roboto'] text-lg text-gray-600 mt-6",
                 ),
                 class_name="max-w-3xl mb-12",

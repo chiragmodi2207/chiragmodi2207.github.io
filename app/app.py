@@ -33,4 +33,4 @@ app = rx.App(
         ),
     ],
 )
-app.add_page(index, title="Apex Accountants | Expert Financial Guidance")
+app.add_page(index, title="KNT Associates | Expert Financial Guidance")

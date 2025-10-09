@@ -9,7 +9,7 @@ def footer() -> rx.Component:
                 rx.el.div(
                     trending_up_icon(class_name="text-emerald-500 h-7 w-7"),
                     rx.el.span(
-                        "Apex Accountants",
+                        "KNT Associates",
                         class_name="font-['Roboto'] text-lg font-bold text-gray-700 ml-2",
                     ),
                     class_name="flex items-center",
@@ -63,7 +63,7 @@ def footer() -> rx.Component:
         ),
         rx.el.div(
             rx.el.p(
-                f"© 2024 Apex Accountants. All rights reserved.",
+                f"© 2025 KNT Associates. All rights reserved.",
                 class_name="font-['Roboto'] text-sm text-gray-500",
             ),
             class_name="mt-12 pt-8 border-t border-gray-200 text-center",
