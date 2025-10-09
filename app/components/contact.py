@@ -1,9 +1,56 @@
 import reflex as rx
 from app.components.icons import map_pin_icon, phone_icon, mail_icon
-from app.states.contact_state import ContactState
 
 
 def contact_form() -> rx.Component:
+    script = """
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzKCRBOJdg7SZkxu_MV0CgoX00ogv0ME4nRgvGJxyCMnM9A6g7F0XiNoAJepCO2Gpwr/exec';
+const form = document.getElementById('contact-form');
+
+const attachListener = () => {
+    const form = document.getElementById('contact-form');
+    if (form && !form.dataset.listenerAttached) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+
+          const submitButton = form.querySelector('button[type="submit"]');
+          const originalButtonHTML = submitButton.innerHTML;
+          submitButton.disabled = true;
+
+          const spinner = document.createElement('div');
+          spinner.className = 'animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2';
+          submitButton.innerHTML = '';
+          submitButton.appendChild(spinner);
+          submitButton.append('Sending...');
+
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                if(response.ok) {
+                    alert('Message sent successfully!');
+                    form.reset();
+                } else {
+                    response.text().then(text => { 
+                        console.error('Error!', text);
+                        alert('Error sending message: ' + text);
+                    })
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Error! ' + error.message);
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonHTML;
+            });
+        });
+        form.dataset.listenerAttached = 'true';
+    }
+};
+
+// Run after the component mounts
+setTimeout(attachListener, 100);
+"""
     return rx.el.div(
         rx.el.h2(
             "Get in Touch",
@@ -48,111 +95,65 @@ def contact_form() -> rx.Component:
                 ),
                 class_name="w-full lg:w-1/3",
             ),
-            rx.el.div(
-                rx.cond(
-                    ContactState.api_error != "",
-                    rx.el.div(
-                        rx.el.p(
-                            ContactState.api_error,
-                            class_name="font-['Roboto'] text-red-600 text-sm",
-                        ),
-                        class_name="mb-4 p-3 bg-red-100 border border-red-300 rounded-lg",
+            rx.el.form(
+                rx.el.div(
+                    rx.el.label(
+                        "Full Name",
+                        html_for="name",
+                        class_name="font-['Roboto'] block text-sm font-medium text-gray-700",
                     ),
+                    rx.el.input(
+                        name="name",
+                        id="name",
+                        placeholder="Your Name",
+                        required=True,
+                        class_name="font-['Roboto'] mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500",
+                    ),
+                    class_name="mb-4",
                 ),
-                rx.cond(
-                    ContactState.api_success != "",
-                    rx.el.div(
-                        rx.el.p(
-                            ContactState.api_success,
-                            class_name="font-['Roboto'] text-green-600 text-sm",
-                        ),
-                        class_name="mb-4 p-3 bg-green-100 border border-green-300 rounded-lg",
+                rx.el.div(
+                    rx.el.label(
+                        "Email Address",
+                        html_for="email",
+                        class_name="font-['Roboto'] block text-sm font-medium text-gray-700",
                     ),
+                    rx.el.input(
+                        name="email",
+                        id="email",
+                        type="email",
+                        placeholder="you@example.com",
+                        required=True,
+                        class_name="font-['Roboto'] mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500",
+                    ),
+                    class_name="mb-4",
                 ),
-                rx.el.form(
-                    rx.el.div(
-                        rx.el.label(
-                            "Full Name",
-                            html_for="name",
-                            class_name="font-['Roboto'] block text-sm font-medium text-gray-700",
-                        ),
-                        rx.el.input(
-                            name="name",
-                            id="name",
-                            placeholder="Your Name",
-                            required=True,
-                            default_value=ContactState.contact_name,
-                            key=ContactState.contact_name,
-                            class_name="font-['Roboto'] mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500",
-                        ),
-                        class_name="mb-4",
+                rx.el.div(
+                    rx.el.label(
+                        "Message",
+                        html_for="message",
+                        class_name="font-['Roboto'] block text-sm font-medium text-gray-700",
                     ),
-                    rx.el.div(
-                        rx.el.label(
-                            "Email Address",
-                            html_for="email",
-                            class_name="font-['Roboto'] block text-sm font-medium text-gray-700",
-                        ),
-                        rx.el.input(
-                            name="email",
-                            id="email",
-                            type="email",
-                            placeholder="you@example.com",
-                            required=True,
-                            default_value=ContactState.contact_email,
-                            key=ContactState.contact_email,
-                            class_name="font-['Roboto'] mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500",
-                        ),
-                        class_name="mb-4",
+                    rx.el.textarea(
+                        name="message",
+                        id="message",
+                        placeholder="How can we help you?",
+                        required=True,
+                        rows=4,
+                        class_name="font-['Roboto'] mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500",
                     ),
-                    rx.el.div(
-                        rx.el.label(
-                            "Message",
-                            html_for="message",
-                            class_name="font-['Roboto'] block text-sm font-medium text-gray-700",
-                        ),
-                        rx.el.textarea(
-                            name="message",
-                            id="message",
-                            placeholder="How can we help you?",
-                            required=True,
-                            rows=4,
-                            default_value=ContactState.contact_message,
-                            key=ContactState.contact_message,
-                            class_name="font-['Roboto'] mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500",
-                        ),
-                        class_name="mb-6",
-                    ),
-                    rx.el.button(
-                        rx.cond(
-                            ContactState.api_loading,
-                            rx.el.div(
-                                rx.el.div(
-                                    class_name="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"
-                                ),
-                                "Sending...",
-                                class_name="flex items-center justify-center",
-                            ),
-                            "Send Message",
-                        ),
-                        type="submit",
-                        disabled=ContactState.api_loading,
-                        class_name=rx.cond(
-                            ContactState.api_loading,
-                            "font-['Roboto'] w-full inline-flex items-center justify-center bg-emerald-400 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-lg cursor-not-allowed",
-                            "font-['Roboto'] w-full inline-flex items-center justify-center bg-emerald-600 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-300",
-                        ),
-                    ),
-                    on_submit=[
-                        ContactState.submit_contact_form,
-                        ContactState.clear_api_messages,
-                    ],
-                    reset_on_submit=True,
+                    class_name="mb-6",
                 ),
+                rx.el.button(
+                    "Send Message",
+                    type="submit",
+                    class_name="font-['Roboto'] w-full inline-flex items-center justify-center bg-emerald-600 text-white px-6 py-3 rounded-lg text-base font-semibold shadow-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-300 disabled:bg-emerald-400",
+                ),
+                id="contact-form",
                 class_name="w-full lg:w-2/3 bg-white p-8 rounded-2xl shadow-lg border border-gray-100",
             ),
             class_name="flex flex-col lg:flex-row gap-12 lg:gap-16",
         ),
+        rx.script(script),
         id="contact",
         class_name="container mx-auto px-4 py-20",
     )
