@@ -1,11 +1,12 @@
 import reflex as rx
+from app.components.icons import trending_up_icon
 
 
 def navbar() -> rx.Component:
     return rx.el.header(
         rx.el.div(
             rx.el.div(
-                rx.icon("trending-up", class_name="text-emerald-600 h-8 w-8"),
+                trending_up_icon(class_name="text-emerald-600 h-8 w-8"),
                 rx.el.span(
                     "Apex Accountants",
                     class_name="font-['Roboto'] text-xl font-bold text-gray-800 ml-2",

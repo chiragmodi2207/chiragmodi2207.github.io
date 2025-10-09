@@ -1,4 +1,5 @@
 import reflex as rx
+from app.components.icons import map_pin_icon, phone_icon, mail_icon
 
 
 def contact_form() -> rx.Component:
@@ -66,9 +67,8 @@ setTimeout(attachListener, 100);
                     class_name="font-['Roboto'] text-xl font-bold text-gray-800 mb-6",
                 ),
                 rx.el.div(
-                    rx.icon(
-                        "map-pin",
-                        class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0",
+                    map_pin_icon(
+                        class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"
                     ),
                     rx.el.p(
                         "123 Finance Street, Suite 400, Capital City, 12345",
@@ -77,9 +77,8 @@ setTimeout(attachListener, 100);
                     class_name="flex items-start mb-4",
                 ),
                 rx.el.div(
-                    rx.icon(
-                        "phone",
-                        class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0",
+                    phone_icon(
+                        class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"
                     ),
                     rx.el.p(
                         "(123) 456-7890", class_name="font-['Roboto'] text-gray-600"
@@ -87,9 +86,7 @@ setTimeout(attachListener, 100);
                     class_name="flex items-center mb-4",
                 ),
                 rx.el.div(
-                    rx.icon(
-                        "mail", class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"
-                    ),
+                    mail_icon(class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"),
                     rx.el.p(
                         "contact@apexaccountants.com",
                         class_name="font-['Roboto'] text-gray-600",
@@ -134,7 +131,7 @@ setTimeout(attachListener, 100);
                     rx.el.label(
                         "Message",
                         html_for="message",
-                        class_name="font['Roboto'] block text-sm font-medium text-gray-700",
+                        class_name="font-['Roboto'] block text-sm font-medium text-gray-700",
                     ),
                     rx.el.textarea(
                         name="message",

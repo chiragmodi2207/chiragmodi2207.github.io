@@ -1,12 +1,11 @@
 import reflex as rx
 from app.states.state import State
+from app.components.icons import check_check_icon, landmark_icon, globe_icon
 
 
 def service_item(service: dict) -> rx.Component:
     return rx.el.li(
-        rx.icon(
-            "check_check", class_name="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0 mt-1"
-        ),
+        check_check_icon(class_name="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0 mt-1"),
         rx.el.div(
             rx.el.h4(
                 service["name"],
@@ -22,10 +21,12 @@ def service_item(service: dict) -> rx.Component:
 
 
 def service_category_card(category: dict) -> rx.Component:
+    icon_map = {"landmark": landmark_icon, "globe": globe_icon}
+    icon_func = icon_map.get(category["icon"], landmark_icon)
     return rx.el.div(
         rx.el.div(
-            rx.icon(category["icon"], class_name="w-10 h-10 text-emerald-600"),
-            class_name="p-4 bg-emerald-100 rounded-xl mb-6",
+            icon_func(class_name="w-10 h-10 text-emerald-600"),
+            class_name="p-4 bg-emerald-100 rounded-xl mb-6 w-fit",
         ),
         rx.el.h3(
             category["title"],

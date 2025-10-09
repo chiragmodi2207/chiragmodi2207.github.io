@@ -1,4 +1,5 @@
 import reflex as rx
+from app.components.icons import trending_up_icon
 
 
 def footer() -> rx.Component:
@@ -6,7 +7,7 @@ def footer() -> rx.Component:
         rx.el.div(
             rx.el.div(
                 rx.el.div(
-                    rx.icon("trending-up", class_name="text-emerald-500 h-7 w-7"),
+                    trending_up_icon(class_name="text-emerald-500 h-7 w-7"),
                     rx.el.span(
                         "Apex Accountants",
                         class_name="font-['Roboto'] text-lg font-bold text-gray-700 ml-2",
