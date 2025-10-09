@@ -4,7 +4,7 @@ from app.components.icons import map_pin_icon, phone_icon, mail_icon
 
 def contact_form() -> rx.Component:
     script = """
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzKCRBOJdg7SZkxu_MV0CgoX00ogv0ME4nRgvGJxyCMnM9A6g7F0XiNoAJepCO2Gpwr/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbybegYbQ-pBlbxTBgFTex3fil1Gc36UzYDTvaRjNq8rwtKtIriJ7QzHt-L_-6614OpN/execc';
 const form = document.getElementById('contact-form');
 
 const attachListener = () => {
