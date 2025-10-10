@@ -26,8 +26,11 @@ def testimonial_card(testimonial: dict) -> rx.Component:
             ),
             class_name="flex items-center",
         ),
-        class_name="bg-white p-8 rounded-2xl shadow-sm border border-gray-100",
+        class_name="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 min-w-[300px] snap-center",
     )
+
+
+
 
 
 def testimonials_section() -> rx.Component:
@@ -43,10 +46,17 @@ def testimonials_section() -> rx.Component:
             ),
             rx.el.div(
                 rx.foreach(State.testimonials, testimonial_card),
-                class_name="grid grid-cols-1 lg:grid-cols-3 gap-8",
+                class_name=(
+                    "flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth "
+                    "px-2 py-4 [-webkit-overflow-scrolling:_touch]"
+                ),
             ),
             class_name="container mx-auto px-4 py-20",
         ),
         id="testimonials",
         class_name="bg-white",
     )
+
+
+
+

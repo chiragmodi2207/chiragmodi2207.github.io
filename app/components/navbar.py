@@ -39,16 +39,16 @@ def navbar() -> rx.Component:
                     href="#contact",
                     class_name="font-['Roboto'] text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors",
                 ),
-                rx.el.a(
-                    "About us",
-                    href="#about",
-                    class_name="font-['Roboto'] text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors",
-                ),
-                rx.el.a(
-                    "Careers",
-                    href="#",
-                    class_name="font-['Roboto'] text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors",
-                ),
+                # rx.el.a(
+                #     "About us",
+                #     href="#about",
+                #     class_name="font-['Roboto'] text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors",
+                # ),
+                # rx.el.a(
+                #     "Careers",
+                #     href="#",
+                #     class_name="font-['Roboto'] text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors",
+                # ),
                 class_name="hidden md:flex items-center gap-6",
             ),
             rx.el.a(

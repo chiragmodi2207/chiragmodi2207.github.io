@@ -79,26 +79,148 @@ class State(rx.State):
             ],
         },
     ]
-    testimonials: list[Testimonial] = [
-        {
-            "name": "John Doe",
-            "role": "CEO, Tech Innovators",
-            "quote": "Their expertise in financial consulting was pivotal for our company's growth. Truly a game-changer.",
-            "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=John",
-        },
-        {
-            "name": "Jane Smith",
-            "role": "Founder, Creative Co.",
-            "quote": "The most professional and responsive accounting team I've ever worked with. They make tax season stress-free.",
-            "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Jane",
-        },
-        {
-            "name": "Samuel Green",
-            "role": "Director, BuildRight",
-            "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
-            "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
-        },
-    ]
+    testimonials = [
+            {
+                "name": "John Doe",
+                "role": "CEO, Tech Innovators",
+                "quote": "Their expertise in financial consulting was pivotal for our company's growth. Truly a game-changer.",
+                "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=John",
+            },
+            {
+                "name": "Jane Smith",
+                "role": "Founder, Creative Co.",
+                "quote": "The most professional and responsive accounting team I've ever worked with. They make tax season stress-free.",
+                "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Jane",
+            },
+            {
+                "name": "Samuel Green",
+                "role": "Director, BuildRight",
+                "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+                "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+            },
+            {
+                "name": "Samuel Green",
+                "role": "Director, BuildRight",
+                "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+                "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+            },
+            {
+                "name": "Samuel Green",
+                "role": "Director, BuildRight",
+                "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+                "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+            },
+            {
+                "name": "Samuel Green",
+                "role": "Director, BuildRight",
+                "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+                "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+            },
+            {
+                "name": "Samuel Green",
+                "role": "Director, BuildRight",
+                "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+                "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+            },
+            {
+                "name": "Samuel Green",
+                "role": "Director, BuildRight",
+                "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+                "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+            },
+            {
+                "name": "Samuel Green",
+                "role": "Director, BuildRight",
+                "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+                "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+            },
+            {
+                "name": "Samuel Green",
+                "role": "Director, BuildRight",
+                "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+                "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+            },
+        ]
+    active_testimonial: int = 0  # Current visible index
+
+
+    def next_slide(self):
+        if self.active_testimonial < self.testimonials.length() - 1:
+            self.active_testimonial += 1
+
+    def prev_slide(self):
+        if self.active_testimonial > 0:
+            self.active_testimonial -= 1
+
+    def go_to_slide(self, index: int):
+        self.active_testimonial = index
+
+    def get_active_testimonial(self) -> int:
+        return self.active_testimonial
+
+    # testimonials: list[Testimonial] = [
+    #     {
+    #         "name": "John Doe",
+    #         "role": "CEO, Tech Innovators",
+    #         "quote": "Their expertise in financial consulting was pivotal for our company's growth. Truly a game-changer.",
+    #         "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=John",
+    #     },
+    #     {
+    #         "name": "Jane Smith",
+    #         "role": "Founder, Creative Co.",
+    #         "quote": "The most professional and responsive accounting team I've ever worked with. They make tax season stress-free.",
+    #         "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Jane",
+    #     },
+    #     {
+    #         "name": "Samuel Green",
+    #         "role": "Director, BuildRight",
+    #         "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+    #         "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+    #     },
+    #     {
+    #         "name": "Samuel Green",
+    #         "role": "Director, BuildRight",
+    #         "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+    #         "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+    #     },
+    #     {
+    #         "name": "Samuel Green",
+    #         "role": "Director, BuildRight",
+    #         "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+    #         "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+    #     },
+    #     {
+    #         "name": "Samuel Green",
+    #         "role": "Director, BuildRight",
+    #         "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+    #         "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+    #     },
+    #     {
+    #         "name": "Samuel Green",
+    #         "role": "Director, BuildRight",
+    #         "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+    #         "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+    #     },
+    #     {
+    #         "name": "Samuel Green",
+    #         "role": "Director, BuildRight",
+    #         "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+    #         "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+    #     },
+    #     {
+    #         "name": "Samuel Green",
+    #         "role": "Director, BuildRight",
+    #         "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+    #         "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+    #     },
+    #     {
+    #         "name": "Samuel Green",
+    #         "role": "Director, BuildRight",
+    #         "quote": "Audit and assurance services were delivered with exceptional detail and clarity. Highly recommended.",
+    #         "avatar_url": "https://api.dicebear.com/9.x/notionists/svg?seed=Samuel",
+    #     },
+
+    # ]
     team: list[TeamMember] = [
         {
             "name": "Eleanor Vance",

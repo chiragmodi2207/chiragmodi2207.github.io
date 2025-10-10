@@ -1,7 +1,6 @@
 import reflex as rx
 from app.components.icons import map_pin_icon, phone_icon, mail_icon
 
-
 def contact_form() -> rx.Component:
     script = """
 const scriptURL = 'https://script.google.com/macros/s/AKfycbwGeKO4c9LQCM1NuczFV3MDP13iNLg0V1n1IFcsAc2EOeqMWlQZFdub0BcoyAzYwbXc/exec';
@@ -48,10 +47,11 @@ const attachListener = () => {
     }
 };
 
-// Run after the component mounts
 setTimeout(attachListener, 100);
 """
+
     return rx.el.div(
+        # Heading
         rx.el.h2(
             "Get in Touch",
             class_name="font-['Roboto'] text-3xl md:text-4xl font-bold text-gray-900 tracking-tight text-center",
@@ -60,16 +60,17 @@ setTimeout(attachListener, 100);
             "Have questions? We're here to help. Reach out to us for a free consultation.",
             class_name="font-['Roboto'] max-w-xl mx-auto text-lg text-gray-600 mt-4 mb-12 text-center",
         ),
+
+        # Contact details + form container
         rx.el.div(
+            # Left: Contact Info + Map
             rx.el.div(
                 rx.el.h3(
                     "Contact Information",
                     class_name="font-['Roboto'] text-xl font-bold text-gray-800 mb-6",
                 ),
                 rx.el.div(
-                    map_pin_icon(
-                        class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"
-                    ),
+                    map_pin_icon(class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"),
                     rx.el.p(
                         "Kamlesh Taili and Associates,1699, Shivshakti society, Sokhda Road - Kheda ",
                         class_name="font-['Roboto'] text-gray-600",
@@ -77,11 +78,10 @@ setTimeout(attachListener, 100);
                     class_name="flex items-start mb-4",
                 ),
                 rx.el.div(
-                    phone_icon(
-                        class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"
-                    ),
+                    phone_icon(class_name="w-6 h-6 text-emerald-600 mr-4 flex-shrink-0"),
                     rx.el.p(
-                        "+91 9033239113", class_name="font-['Roboto'] text-gray-600"
+                        "+91 9033239113",
+                        class_name="font-['Roboto'] text-gray-600",
                     ),
                     class_name="flex items-center mb-4",
                 ),
@@ -93,8 +93,21 @@ setTimeout(attachListener, 100);
                     ),
                     class_name="flex items-center mb-4",
                 ),
+                rx.el.div(
+                    rx.el.iframe(
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.0784313079945!2d72.685708!3d22.717798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e7f8e0bd2c2ed%3A0x5b32fa3cfeb39fcb!2sSokhda%2C%20Gujarat%20387570!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+                        allowfullscreen=True,
+                        loading="lazy",
+                        referrerpolicy="no-referrer-when-downgrade",
+                        class_name="w-full h-64 rounded-lg border-0 shadow-md",
+                    )
+                    ,
+                    class_name="mt-6",
+                ),
                 class_name="w-full lg:w-1/3",
             ),
+
+            # Right: Contact Form
             rx.el.form(
                 rx.el.div(
                     rx.el.label(
@@ -153,7 +166,10 @@ setTimeout(attachListener, 100);
             ),
             class_name="flex flex-col lg:flex-row gap-12 lg:gap-16",
         ),
+
+        # Attach the script
         rx.script(script),
+
         id="contact",
         class_name="container mx-auto px-4 py-20",
     )
