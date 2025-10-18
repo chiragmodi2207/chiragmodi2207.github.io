@@ -41,7 +41,7 @@ def about_section() -> rx.Component:
             ),
             rx.el.div(
                 rx.foreach(State.team, team_member_card),
-                class_name="grid grid-cols-2 md:grid-cols-4 gap-8",
+                class_name="flex flex-row flex-wrap justify-center gap-8",
             ),
             class_name="container mx-auto px-4 py-20 flex flex-col items-center",
         ),

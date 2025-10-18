@@ -541,7 +541,7 @@ export const connect = async (
 //    autoUnref: false,
 //    query: { token: getToken() },
 //  });
-  // Ensure undefined fields in events are sent as null instead of removed
+//  // Ensure undefined fields in events are sent as null instead of removed
 //  socket.current.io.encoder.replacer = (k, v) => (v === undefined ? null : v);
 //  socket.current.io.decoder.tryParse = (str) => {
 //    try {

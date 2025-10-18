@@ -223,23 +223,28 @@ class State(rx.State):
     # ]
     team: list[TeamMember] = [
         {
-            "name": "Eleanor Vance",
-            "role": "Managing Partner, CPA",
-            "avatar_url": "https://api.dicebear.com/9.x/initials/svg?seed=EleanorVance",
+            "name": "Kamlesh Taili",
+            "role": "Founder and Managing director",
+            "avatar_url": "https://api.dicebear.com/9.x/initials/svg?seed=KamleshTaili",
         },
         {
-            "name": "Marcus Thorne",
-            "role": "Senior Tax Consultant",
-            "avatar_url": "https://api.dicebear.com/9.x/initials/svg?seed=MarcusThorne",
+            "name": "Maya Taili",
+            "role": "Co- founder",
+            "avatar_url": "https://api.dicebear.com/9.x/initials/svg?seed=MayaTaili",
         },
         {
-            "name": "Isabelle Reed",
-            "role": "Lead Auditor",
-            "avatar_url": "https://api.dicebear.com/9.x/initials/svg?seed=IsabelleReed",
+            "name": "Chirag Modi",
+            "role": "Senior Account Manager",
+            "avatar_url": "https://api.dicebear.com/9.x/initials/svg?seed=ChiragModi",
         },
         {
-            "name": "Julian Knox",
-            "role": "Business Advisor",
-            "avatar_url": "https://api.dicebear.com/9.x/initials/svg?seed=JulianKnox",
+            "name": "Dixit Modi",
+            "role": "Operational Manager",
+            "avatar_url": "https://api.dicebear.com/9.x/initials/svg?seed=DixitModi",
+        },
+        {
+            "name": "Krupali vataliya",
+            "role": "Account executive",
+            "avatar_url": "https://api.dicebear.com/9.x/initials/svg?seed=KrupaliVataliya",
         },
     ]
